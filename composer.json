@@ -1,5 +1,5 @@
 {
-	"name":"alipaysdk-swoole/easysdk",
+	"name":"yijin/easysdk",
 	"description":"支付宝官方 Alipay Easy SDK-适配SWOOLE",
 	"type":"library",
 	"version":"2.2.0",
