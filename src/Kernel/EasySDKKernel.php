@@ -27,7 +27,7 @@ class EasySDKKernel
     private $bizParams;
 
 
-    public function __construct($config)
+    public function __construct(Config $config)
     {
         $this->config = $config;
     }
@@ -220,7 +220,7 @@ class EasySDKKernel
     /**
      * 验证签名
      *
-     * @param $respMap  string 响应内容，可以从中提取出sign和body
+     * @param $respMap mixed 响应内容，可以从中提取出sign和body
      * @param $alipayPublicKey string 支付宝公钥
      * @return bool  true：验签通过；false：验签不通过
      * @throws \Exception

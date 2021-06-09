@@ -5,18 +5,25 @@ declare(strict_types=1);
 namespace Alipay\EasySDKSwoole\Kernel;
 
 
+use Alipay\EasySDKSwoole\Kernel\Functions\Base;
+use Alipay\EasySDKSwoole\Kernel\Functions\Marketing;
+use Alipay\EasySDKSwoole\Kernel\Functions\Member;
+use Alipay\EasySDKSwoole\Kernel\Functions\Payment;
+use Alipay\EasySDKSwoole\Kernel\Functions\Security;
+use Alipay\EasySDKSwoole\Kernel\Functions\Util;
+
 class Factory
 {
     public $config = null;
     public $kernel = null;
-    protected $base;
-    protected $marketing;
-    protected $member;
-    protected $payment;
-    protected $security;
-    protected $util;
+    public $base;
+    public $marketing;
+    public $member;
+    public $payment;
+    public $security;
+    public $util;
 
-    public function __construct($config)
+    public function __construct(Config $config)
     {
         if (!empty($config->alipayCertPath)) {
             $certEnvironment = new CertEnvironment();
@@ -31,11 +38,11 @@ class Factory
         }
 
         $kernel = new EasySDKKernel($config);
-        self::$base = new Base($kernel);
-        self::$marketing = new Marketing($kernel);
-        self::$member = new Member($kernel);
-        self::$payment = new Payment($kernel);
-        self::$security = new Security($kernel);
-        self::$util = new Util($kernel);
+        $this->base = new Base($kernel);
+        $this->marketing = new Marketing($kernel);
+        $this->member = new Member($kernel);
+        $this->payment = new Payment($kernel);
+        $this->security = new Security($kernel);
+        $this->util = new Util($kernel);
     }
 }
